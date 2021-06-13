@@ -1,4 +1,3 @@
-
 const Engine = Matter.Engine;
 const World = Matter.World;
 const Bodies = Matter.Bodies;
@@ -18,8 +17,8 @@ function setup() {
 	world = engine.world;
 	
 	groundObject=new ground(width/2,670,width,20);
-	dustbinObj=new dustbin(1200,650);
-
+	dustbinObj=new Dustbin(1200,650);
+    papweObject=new Paper(1100,600);
 
 	Engine.run(engine);
   
@@ -33,14 +32,15 @@ function draw() {
 
   groundObject.display();
   dustbinObj.display();
-  paperObject.display()
+  paperObject.display();
 
 
-  function keyPressed() {
-	  if (keyCore=== UP_ARROW)
-
-	  Matter.Body.applyForce(paperObject.body,paperObject.body.position,(x:130,y:145));
-  }
+  
 
 }
 
+function keyPressed() {
+	if (keyCore=== UP_ARROW)
+
+	Matter.Body.applyForce(paperObject.body,paperObject.body.position,{x:130,y:-145});
+}
